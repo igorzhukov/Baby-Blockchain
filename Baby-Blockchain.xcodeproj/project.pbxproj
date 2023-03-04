@@ -16,6 +16,9 @@
 		1E145BE4299BB7210081DF93 /* Baby_BlockchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E145BE3299BB7210081DF93 /* Baby_BlockchainTests.swift */; };
 		1E145BEE299BB7210081DF93 /* Baby_BlockchainUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E145BED299BB7210081DF93 /* Baby_BlockchainUITests.swift */; };
 		1E145BF0299BB7210081DF93 /* Baby_BlockchainUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E145BEF299BB7210081DF93 /* Baby_BlockchainUITestsLaunchTests.swift */; };
+		1E145BFD299BBAD40081DF93 /* KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E145BFC299BBAD40081DF93 /* KeyPair.swift */; };
+		1E145BFF299BBADE0081DF93 /* SignatureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E145BFE299BBADE0081DF93 /* SignatureService.swift */; };
+		1EB23D1329B347870029B636 /* LegacySignatureEC+HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB23D1229B347870029B636 /* LegacySignatureEC+HMAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		1E145BE9299BB7210081DF93 /* Baby-BlockchainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Baby-BlockchainUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E145BED299BB7210081DF93 /* Baby_BlockchainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baby_BlockchainUITests.swift; sourceTree = "<group>"; };
 		1E145BEF299BB7210081DF93 /* Baby_BlockchainUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baby_BlockchainUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1E145BFC299BBAD40081DF93 /* KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPair.swift; sourceTree = "<group>"; };
+		1E145BFE299BBADE0081DF93 /* SignatureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureService.swift; sourceTree = "<group>"; };
+		1EB23D1229B347870029B636 /* LegacySignatureEC+HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LegacySignatureEC+HMAC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 				1E145BD5299BB7210081DF93 /* Assets.xcassets */,
 				1E145BD7299BB7210081DF93 /* LaunchScreen.storyboard */,
 				1E145BDA299BB7210081DF93 /* Info.plist */,
+				1E145BFC299BBAD40081DF93 /* KeyPair.swift */,
+				1E145BFE299BBADE0081DF93 /* SignatureService.swift */,
+				1EB23D1129B3476C0029B636 /* Legacy */,
 			);
 			path = "Baby-Blockchain";
 			sourceTree = "<group>";
@@ -125,6 +134,14 @@
 				1E145BEF299BB7210081DF93 /* Baby_BlockchainUITestsLaunchTests.swift */,
 			);
 			path = "Baby-BlockchainUITests";
+			sourceTree = "<group>";
+		};
+		1EB23D1129B3476C0029B636 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				1EB23D1229B347870029B636 /* LegacySignatureEC+HMAC.swift */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E145BD1299BB7200081DF93 /* ViewController.swift in Sources */,
+				1E145BFD299BBAD40081DF93 /* KeyPair.swift in Sources */,
+				1EB23D1329B347870029B636 /* LegacySignatureEC+HMAC.swift in Sources */,
 				1E145BCD299BB7200081DF93 /* AppDelegate.swift in Sources */,
+				1E145BFF299BBADE0081DF93 /* SignatureService.swift in Sources */,
 				1E145BCF299BB7200081DF93 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

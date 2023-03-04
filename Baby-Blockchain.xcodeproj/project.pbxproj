@@ -105,6 +105,7 @@
 		1E145BCB299BB7200081DF93 /* Baby-Blockchain */ = {
 			isa = PBXGroup;
 			children = (
+				1EE6674229B34F8F00C7C07D /* Blockchain */,
 				1E145BCC299BB7200081DF93 /* AppDelegate.swift */,
 				1E145BCE299BB7200081DF93 /* SceneDelegate.swift */,
 				1E145BD0299BB7200081DF93 /* ViewController.swift */,
@@ -112,8 +113,6 @@
 				1E145BD5299BB7210081DF93 /* Assets.xcassets */,
 				1E145BD7299BB7210081DF93 /* LaunchScreen.storyboard */,
 				1E145BDA299BB7210081DF93 /* Info.plist */,
-				1E145BFC299BBAD40081DF93 /* KeyPair.swift */,
-				1E145BFE299BBADE0081DF93 /* SignatureService.swift */,
 				1EB23D1129B3476C0029B636 /* Legacy */,
 			);
 			path = "Baby-Blockchain";
@@ -142,6 +141,15 @@
 				1EB23D1229B347870029B636 /* LegacySignatureEC+HMAC.swift */,
 			);
 			path = Legacy;
+			sourceTree = "<group>";
+		};
+		1EE6674229B34F8F00C7C07D /* Blockchain */ = {
+			isa = PBXGroup;
+			children = (
+				1E145BFC299BBAD40081DF93 /* KeyPair.swift */,
+				1E145BFE299BBADE0081DF93 /* SignatureService.swift */,
+			);
+			path = Blockchain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

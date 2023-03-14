@@ -62,7 +62,7 @@ class LegacyUser {
         }
     }
     
-    private func sha512Digest(forData data : Data) -> Data {
+    private func sha512Digest(forData data: Data) -> Data {
         let len = Int(CC_SHA512_DIGEST_LENGTH)
         let digest = UnsafeMutablePointer<UInt8>.allocate(capacity: len)
         CC_SHA512((data as NSData).bytes, CC_LONG(data.count), digest)

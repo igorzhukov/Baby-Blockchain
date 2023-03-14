@@ -28,5 +28,14 @@ class ViewController: UIViewController {
         } catch let error {
             print(error.localizedDescription)
         }
+        
+        let hashService = HashService()
+        let data = message.data(using: .utf8)!
+        let hash1 = hashService.sha512Digest(forData: data)
+        let hash2 = hashService.sha512Digest(forData: data)
+       
+        if hash1 == hash2 {
+            print("Has is the same")
+        }
     }
 }

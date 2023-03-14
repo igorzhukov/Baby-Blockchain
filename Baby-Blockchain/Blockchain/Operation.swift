@@ -13,6 +13,8 @@ struct Operation {
     let amount: UInt
     let signature: Data
     
+    private let hashService = HashService()
+    
     func isValid() -> Bool {
         guard amount <= sender.balance else {
             return false
@@ -25,5 +27,17 @@ struct Operation {
         // TODO: add message
         // TODO: signature verify
         return true
+    }
+    
+    func hash() -> Data {
+        let senderData = sender.id.data(using: .utf8)!
+        let receiverData = receiver.id.data(using: .utf8)!
+        let amountData = String(amount).data(using: .utf8)!
+        var dataToHash = Data()
+        dataToHash.append(senderData)
+        dataToHash.append(receiverData)
+        dataToHash.append(amountData)
+        
+        return hashService.sha512Digest(forData: dataToHash)
     }
 }

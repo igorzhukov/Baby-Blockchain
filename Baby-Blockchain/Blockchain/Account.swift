@@ -8,7 +8,7 @@
 import Foundation
 
 struct Account {
-    let id: UUID
+    let id: String
     var publicKeys: [SecKey]
     private(set) var balance: UInt
     

@@ -9,14 +9,22 @@ import Foundation
 
 struct Account {
     let id: UUID
-    private var publicKeys: [SecKey]
+    var publicKeys: [SecKey]
     private(set) var balance: UInt
     
-    public func addPublicKeyToAccount(_ publicKey: SecKey) {
+    public mutating func addPublicKeyToAccount(_ publicKey: SecKey) {
         publicKeys.append(publicKey)
     }
     
-    public func updateBalance(with balance: UInt) {
-        publicKeys.append(publicKey)
+    public mutating func updateBalance(with balance: UInt) {
+        self.balance = balance
+    }
+    
+    public mutating func decreaseBalance(with amount: UInt) {
+        balance -= amount
+    }
+    
+    public mutating func increaseBalance(with amount: UInt) {
+        balance += amount
     }
 }

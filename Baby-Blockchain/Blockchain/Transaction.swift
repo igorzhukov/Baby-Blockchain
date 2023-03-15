@@ -16,11 +16,12 @@ struct Transaction {
         
         var dataToHash = Data()
         
+        /// append `nonce` as Data into `dataToHash
         dataToHash.append(String(nonce).data(using: .utf8)!)
         
         operations
-            .map { $0.hash() }
-            .forEach { dataToHash.append($0) }
+            .map { $0.hash() } // map to array of Operation hashes
+            .forEach { dataToHash.append($0) } /// append each Operation hash into `dataToHash`
         
         self.id = hashService.sha512Digest(forData: dataToHash)
     }

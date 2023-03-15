@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 final class Wallet {
     init(keyPair: KeyPair) {
         self.keyPair = keyPair

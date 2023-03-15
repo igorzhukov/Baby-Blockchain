@@ -8,8 +8,10 @@
 import Foundation
 
 final class Node {
+    
     init(blockchain: Blockchain) {
         self.blockchain = blockchain
     }
-    let blockchain: Blockchain
+    
+    private let blockchain: Blockchain
 }

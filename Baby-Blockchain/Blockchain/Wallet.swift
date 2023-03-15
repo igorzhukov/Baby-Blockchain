@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 final class Wallet {
     init(keyPair: KeyPair) {
         self.keyPair = keyPair
@@ -26,7 +24,6 @@ final class Wallet {
     }
     
     // a function that receives transaction (or any other data), private key and returns the signature for that data.
-
     func signTransaction() {
         
     }

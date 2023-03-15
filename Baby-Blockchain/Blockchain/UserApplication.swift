@@ -8,8 +8,12 @@
 import Foundation
 
 final class UserApplication {
-    init(wallet: Wallet) {
+    
+    init(wallet: Wallet, node: Node) {
         self.wallet = wallet
+        self.node = node
     }
-    let wallet: Wallet
+    
+    private let wallet: Wallet
+    private let node: Node
 }

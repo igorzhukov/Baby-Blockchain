@@ -164,17 +164,17 @@
 		1EE6674229B34F8F00C7C07D /* Blockchain */ = {
 			isa = PBXGroup;
 			children = (
-				1E145BFC299BBAD40081DF93 /* KeyPair.swift */,
+				1EE9908829C0A1F900F782A2 /* HashService.swift */,
 				1E145BFE299BBADE0081DF93 /* SignatureService.swift */,
+				1E145BFC299BBAD40081DF93 /* KeyPair.swift */,
 				1EE6674529B79DC700C7C07D /* Account.swift */,
 				1EE6674729B7A01D00C7C07D /* Operation.swift */,
 				1EE6674929B7A02D00C7C07D /* Transaction.swift */,
 				1EE9908A29C0C14300F782A2 /* Block.swift */,
 				1EE9908C29C0C1C300F782A2 /* Blockchain.swift */,
-				1EE9909229C0D73100F782A2 /* UserApplication.swift */,
-				1EE9909029C0D72100F782A2 /* Wallet.swift */,
 				1EE9908E29C0D70C00F782A2 /* Node.swift */,
-				1EE9908829C0A1F900F782A2 /* HashService.swift */,
+				1EE9909029C0D72100F782A2 /* Wallet.swift */,
+				1EE9909229C0D73100F782A2 /* UserApplication.swift */,
 			);
 			path = Blockchain;
 			sourceTree = "<group>";

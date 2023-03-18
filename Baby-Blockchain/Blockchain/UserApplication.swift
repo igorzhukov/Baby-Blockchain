@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 final class UserApplication {
     
     init(wallet: Wallet, node: Node) {
@@ -16,9 +14,8 @@ final class UserApplication {
         self.node = node
     }
     
-    let wallet: Wallet
-    let node: Node
-    
+    private let wallet: Wallet
+    private let node: Node
     
     public func createSendTransaction(receiver: Account, amount: UInt) {
         guard let transaction = wallet.createSendTransaction(receiver: receiver, amount: amount) else {

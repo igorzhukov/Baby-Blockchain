@@ -8,7 +8,7 @@
 import Foundation
 
 
-public final class Wallet {
+final class Wallet {
 
     init(
         keyPair: KeyPair,
@@ -28,7 +28,7 @@ public final class Wallet {
     private let signatureService: SignatureService
     private let hashService: HashService
     
-    func createSendTransaction(receiver: Account, amount: UInt) -> NodeTransaction? {
+    public func createSendTransaction(receiver: Account, amount: UInt) -> NodeTransaction? {
         let operationTextToSign = account.id + receiver.id + String(amount)
         
         let operationSignature = try! signatureService.sign(textToSign: operationTextToSign, privateKey: keyPair.privateKey)
@@ -49,7 +49,7 @@ public final class Wallet {
         return NodeTransaction(transaction: transaction, transactionSignature: signature, publicKey: keyPair.publicKey)
     }
     
-    func signTransaction(_ transaction: Transaction) -> DigitalSignature? {
+    public func signTransaction(_ transaction: Transaction) -> DigitalSignature? {
         return try! signatureService.sign(dataToSign: transaction.id, privateKey: keyPair.privateKey)
     }
 }

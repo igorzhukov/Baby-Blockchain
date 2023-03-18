@@ -25,7 +25,6 @@ struct Block {
         self.id = hashService.sha512Digest(forData: dataToHash)
     }
     
-    
     /// the hash value from all other data
     let id: Data
     
@@ -35,4 +34,7 @@ struct Block {
     
     /// a list of transactions confirmed in this block.
     let transactions: [Transaction]
+    
+    
+   
 }

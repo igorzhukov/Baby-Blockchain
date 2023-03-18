@@ -19,13 +19,18 @@ final class Blockchain {
     private(set) var blocksHistory: [Block]
     
     public func appendBlock(block: Block) -> Bool {
-        let blockchainLastBlockId = blocksHistory.last?.id
+        let integrity = checkIntegrity(of: block)
         
-        if blockchainLastBlockId == block.id {
+        if integrity {
             blocksHistory.append(block)
             return true
         } else {
             return false
         }
+    }
+    
+    private func checkIntegrity(of newBlock: Block) -> Bool {
+        let lastBlockId = blocksHistory.last?.id
+        return lastBlockId == newBlock.previousBlockId
     }
 }

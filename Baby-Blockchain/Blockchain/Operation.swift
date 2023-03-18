@@ -8,21 +8,37 @@
 import Foundation
 
 struct Operation {
+    init(
+        sender: Account,
+         receiver: Account,
+         amount: UInt,
+         signature: Data,
+         signatureService: SignatureService = SignatureService(),
+         hashService: HashService = HashService()
+    ) {
+        self.sender = sender
+        self.receiver = receiver
+        self.amount = amount
+        self.signature = signature
+        self.signatureService = signatureService
+        self.hashService = hashService
+    }
+    
     let sender: Account
     let receiver: Account
     let amount: UInt
     let signature: Data
+    private let hashService: HashService
+    private let signatureService: SignatureService
     
-    private let hashService = HashService()
+   
     
     func isValid() -> Bool {
         guard amount <= sender.balance else {
             return false
         }
         
-        let signatureService = SignatureService()
-        
-        let publicKey = sender.publicKeys.first!
+        let publicKey = sender.publicKey
  
         // TODO: add message
         // TODO: signature verify

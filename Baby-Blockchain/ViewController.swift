@@ -21,20 +21,21 @@ class ViewController: UIViewController {
     func testRun() {
         
         /// init Signature and Hash services
-        let hashService = HashService()
         let signatureService = SignatureService()
         
         /// generate 2 KeyPairs for 2 wallets
         let keyPair1 = try! signatureService.createECCKeyPair()
         let keyPair2 = try! signatureService.createECCKeyPair()
         
-        /// init 2 Wallets
-        let wallet1 = Wallet(keyPair: keyPair1)
-        let wallet2 = Wallet(keyPair: keyPair1)
+       
         
         /// init 2 Accounts
-        let account1 = Account(id: "1", publicKeys: [keyPair1.publicKey], balance: 100)
-        let account2 = Account(id: "2", publicKeys: [keyPair2.publicKey], balance: 20)
+        let account1 = Account(id: "1", publicKey: keyPair1.publicKey, balance: 100)
+        let account2 = Account(id: "2", publicKey: keyPair2.publicKey, balance: 20)
+        
+        /// init 2 Wallets
+        let wallet1 = Wallet(keyPair: keyPair1)
+        let wallet2  = Wallet(keyPair: keyPair1)
         
         /// init 1 Operation data
         let operation1Amount = 2

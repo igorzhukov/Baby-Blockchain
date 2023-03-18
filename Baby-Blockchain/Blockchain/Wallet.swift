@@ -8,12 +8,15 @@
 import Foundation
 
 final class Wallet {
+    
     init(keyPair: KeyPair) {
         self.keyPair = keyPair
     }
     
     let keyPair: KeyPair
     
+    
+    // 
     func createTransaction() {
         
     }

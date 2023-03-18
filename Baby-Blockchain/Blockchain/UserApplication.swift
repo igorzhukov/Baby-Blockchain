@@ -16,4 +16,10 @@ final class UserApplication {
     
     private let wallet: Wallet
     private let node: Node
+    
+    
+    public func createSendTransaction(receiver: Account) {
+        
+        
+    }
 }

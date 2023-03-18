@@ -23,7 +23,7 @@ final class Node {
     private let signatureService: SignatureService
     private let blockchain: Blockchain
     
-    public func verifyAndApplyTransactionsToBlockchain(_ transactions: [NodeTransaction]) -> Bool {
+    public func validateAndApplyTransactionsToBlockchain(_ transactions: [NodeTransaction]) -> Bool {
         
         let verifiedTransactions = transactions
             .filter { verifyTransactionSignature($0) }

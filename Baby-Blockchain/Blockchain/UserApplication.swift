@@ -22,7 +22,7 @@ final class UserApplication {
             return
         }
         
-        let result = node.verifyAndApplyTransactionsToBlockchain([transaction])
+        let result = node.validateAndApplyTransactionsToBlockchain([transaction])
         print(result)
     }
 }

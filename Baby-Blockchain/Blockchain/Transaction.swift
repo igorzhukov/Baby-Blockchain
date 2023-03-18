@@ -31,5 +31,4 @@ struct Transaction {
     let nonce: UInt
     
     let operations: [Operation]
-    
 }

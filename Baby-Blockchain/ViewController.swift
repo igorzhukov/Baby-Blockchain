@@ -9,12 +9,7 @@ import UIKit
 
 typealias DigitalSignature = Data
 
-
-// TODO: Connection if blockchain is injected (true/false)
-
-// TODO: who checks signature
-
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     private let signatureService = SignatureService()
     private let hashService = HashService()

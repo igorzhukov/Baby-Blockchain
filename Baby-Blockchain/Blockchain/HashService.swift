@@ -10,7 +10,6 @@ import CommonCrypto
 
 final class HashService {
     
-    
     func sha512Digest(forData data: Data) -> Data {
         let lenght = Int(CC_SHA512_DIGEST_LENGTH)
         let digest = UnsafeMutablePointer<UInt8>.allocate(capacity: lenght)

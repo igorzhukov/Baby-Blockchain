@@ -34,7 +34,4 @@ struct Block {
     
     /// a list of transactions confirmed in this block.
     let transactions: [Transaction]
-    
-    
-   
 }

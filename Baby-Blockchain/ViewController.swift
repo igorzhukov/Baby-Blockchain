@@ -7,35 +7,57 @@
 
 import UIKit
 
+
+// TODO: Connection if blockchain is injected (true/false)
+
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let message = "Text to sign!"
+        testRun()
+    }
+    
+    func testRun() {
+        
+        /// init Signature and Hash services
         let signatureService = SignatureService()
         
-        do {
-            let keyPair = try signatureService.createECCKeyPair()
-            
-            let signature = try signatureService.sign(textToSign: message,
-                                                      privateKey: keyPair.privateKey)
-            
-            let signatureIsVerified = try signatureService.verifySignature(textToSign: message,
-                                                                           signature: signature,
-                                                                           publicKey: keyPair.publicKey)
-            print(signatureIsVerified)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        /// generate 2 KeyPairs for 2 wallets
+        let keyPair1 = try! signatureService.createECCKeyPair()
+        let keyPair2 = try! signatureService.createECCKeyPair()
         
-        let hashService = HashService()
-        let data = message.data(using: .utf8)!
-        let hash1 = hashService.sha512Digest(forData: data)
-        let hash2 = hashService.sha512Digest(forData: data)
        
-        if hash1 == hash2 {
-            print("Has is the same")
-        }
+        
+        /// init 2 Accounts
+        let account1 = Account(id: "1", publicKey: keyPair1.publicKey, balance: 100)
+        let account2 = Account(id: "2", publicKey: keyPair2.publicKey, balance: 20)
+        
+        /// init 2 Wallets
+        let wallet1 = Wallet(keyPair: keyPair1)
+        let wallet2  = Wallet(keyPair: keyPair1)
+        
+        /// init 1 Operation data
+        let operation1Amount = 2
+        let operation1TextToSign = account1.id + account2.id + String(operation1Amount)
+        
+        /// sign 1 Operation data
+        let operation1Signature = try! signatureService.sign(textToSign: operation1TextToSign, privateKey: wallet1.keyPair.privateKey)
+        
+        /// init 1 Operation
+        let operation1 = Operation(sender: account1, receiver: account2, amount: 2, signature: operation1Signature)
+        
+        /// init 1 Transaction
+        let transaction1 = Transaction(operations: [operation1], hashService: HashService())
+        
+        /// init 1 Blockchain
+        let blockchain1 = Blockchain()
+        
+        let blockchainLastBlockId = blockchain1.blocksHistory.last?.id
+        
+        /// init 1 Block
+        let block1 = Block(previousBlockId: blockchainLastBlockId, transactions: [transaction1], hashService: HashService())
+        
+        blockchain1.addBlock(block: block1)
     }
 }

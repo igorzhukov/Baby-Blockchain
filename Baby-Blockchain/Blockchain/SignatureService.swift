@@ -44,6 +44,11 @@ final class SignatureService {
     }
     
     func sign(textToSign: String, privateKey: SecKey) throws -> Data {
+        let dataToSign = textToSign.data(using: .utf8)!
+        return try sign(dataToSign: dataToSign, privateKey: privateKey)
+    }
+    
+    func sign(dataToSign: Data, privateKey: SecKey) throws -> Data {
         var error: Unmanaged<CFError>?
         
         let algorithm: SecKeyAlgorithm = .ecdsaSignatureMessageX962SHA512
@@ -51,15 +56,15 @@ final class SignatureService {
             throw SignatureError.signatureAlgorithmIsNotSupported(algorithm: String(describing: algorithm))
         }
         
-        let data2sign = textToSign.data(using: .utf8)!
         // create the signature
-        guard let signature = SecKeyCreateSignature(privateKey, algorithm, data2sign as CFData, &error) as Data? else {
+        guard let signature = SecKeyCreateSignature(privateKey, algorithm, dataToSign as CFData, &error) as Data? else {
             throw error!.takeRetainedValue() as Error
         }
         
         print("Signature: " + signature.base64EncodedString())
         return signature
     }
+
     
     func verifySignature(textToSign: String,
                          signature: Data,

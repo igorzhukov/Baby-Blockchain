@@ -36,11 +36,6 @@ struct Operation {
             return false
         }
         
-        let publicKey = sender.publicKey
-        
- 
-        // TODO: add message
-        // TODO: signature verify
         return true
     }
     

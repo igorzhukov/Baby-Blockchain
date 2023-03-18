@@ -66,7 +66,14 @@ final class SignatureService {
     }
 
     
-    func verifySignature(textToSign: String,
+    func verifySignature(textToVerify: String,
+                         signature: DigitalSignature,
+                         publicKey: SecKey) throws -> Bool {
+        let data = textToVerify.data(using: .utf8)!
+        return  try verifySignature(dataToVerify: data, signature: signature, publicKey: publicKey)
+    }
+    
+    func verifySignature(dataToVerify: Data,
                          signature: Data,
                          publicKey: SecKey) throws -> Bool {
         var error: Unmanaged<CFError>?
@@ -77,9 +84,8 @@ final class SignatureService {
         guard SecKeyIsAlgorithmSupported(publicKey, .verify, algorithm) else {
             throw error!.takeRetainedValue() as Error
         }
-        
-        let data = textToSign.data(using: .utf8)!
-        let result = SecKeyVerifySignature(publicKey, algorithm, data as CFData, signature as CFData, &error)
+    
+        let result = SecKeyVerifySignature(publicKey, algorithm, dataToVerify as CFData, signature as CFData, &error)
         
         if result {
             print("Signature is verified")

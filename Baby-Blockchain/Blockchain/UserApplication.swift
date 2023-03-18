@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 final class UserApplication {
     
     init(wallet: Wallet, node: Node) {
@@ -23,7 +25,7 @@ final class UserApplication {
             return
         }
         
-        let result = node.validateAndApplyTransactionsToBlockchain([transaction])
+        let result = node.verifyAndApplyTransactionsToBlockchain([transaction])
         print(result)
     }
 }

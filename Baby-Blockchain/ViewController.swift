@@ -7,8 +7,12 @@
 
 import UIKit
 
+typealias DigitalSignature = Data
+
 
 // TODO: Connection if blockchain is injected (true/false)
+
+// TODO: who checks signature
 
 class ViewController: UIViewController {
 
@@ -39,7 +43,7 @@ class ViewController: UIViewController {
         let wallet = Wallet(keyPair: keyPair, account: account, signatureService: signatureService, hashService: hashService)
         
         let blockchain = Blockchain()
-        let node = Node(blockchain: blockchain)
+        let node = Node(blockchain: blockchain, signatureService: signatureService)
          
         let userApplication = UserApplication(wallet: wallet, node: node)
         

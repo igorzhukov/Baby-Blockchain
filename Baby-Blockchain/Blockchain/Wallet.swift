@@ -7,8 +7,9 @@
 
 import Foundation
 
-final class Wallet {
-    
+
+public final class Wallet {
+
     init(
         keyPair: KeyPair,
         account: Account,
@@ -27,13 +28,11 @@ final class Wallet {
     private let signatureService: SignatureService
     private let hashService: HashService
     
-    public func createSendTransaction(receiver: Account, amount: UInt) -> Transaction? {
+    func createSendTransaction(receiver: Account, amount: UInt) -> NodeTransaction? {
         let operationTextToSign = account.id + receiver.id + String(amount)
         
-        /// sign 1 Operation data
         let operationSignature = try! signatureService.sign(textToSign: operationTextToSign, privateKey: keyPair.privateKey)
         
-        /// init 1 Operation
         let operation = Operation(sender: account,
                                    receiver: receiver,
                                    amount: amount,
@@ -41,27 +40,16 @@ final class Wallet {
         
         guard operation.isValid() else { return nil }
         
-        /// init 1 Transaction
         let transaction = Transaction(operations: [operation], hashService: HashService())
         
         transactionsHistory.append(transaction)
-        return transaction
-    }
-    
-    /*
-    // a function that accesses the transaction history of the current wallet, calculates the current balance and returns as a number. Or makes an appropriate request to the full node of the network to obtain the current balance by accountID.
-    public func getBalance() {
-//        let operations = transactionsHistory.flatMap { $0.operations}
-    }
-    
-    // a function that receives transaction (or any other data), private key and returns the signature for that data.
-    public func signTransaction() {
         
+        guard let signature = signTransaction(transaction) else { return nil }
+        
+        return NodeTransaction(transaction: transaction, transactionSignature: signature, publicKey: keyPair.publicKey)
     }
     
-    // that function gets the params (like receiver ID, amount to pay) and forms the body of the transaction, also signs that transaction body and sends it to some full node in the network.
-    public func createOperation() {
-        
+    func signTransaction(_ transaction: Transaction) -> DigitalSignature? {
+        return try! signatureService.sign(dataToSign: transaction.id, privateKey: keyPair.privateKey)
     }
-     */
 }

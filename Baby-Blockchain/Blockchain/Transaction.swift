@@ -9,7 +9,6 @@ import Foundation
 
 struct Transaction {
     
-    // TODO: make HashService as protocol
     init(operations: [Operation], hashService: HashService) {
         self.operations = operations
         self.nonce = UInt.random(in: 0...UInt.max)

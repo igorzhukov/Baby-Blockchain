@@ -14,12 +14,16 @@ final class UserApplication {
         self.node = node
     }
     
-    private let wallet: Wallet
-    private let node: Node
+    let wallet: Wallet
+    let node: Node
     
     
-    public func createSendTransaction(receiver: Account) {
+    public func createSendTransaction(receiver: Account, amount: UInt) {
+        guard let transaction = wallet.createSendTransaction(receiver: receiver, amount: amount) else {
+            return
+        }
         
-        
+        let result = node.validateAndApplyTransactionsToBlockchain([transaction])
+        print(result)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct Operation {
     init(
-        sender: Account,
+         sender: Account,
          receiver: Account,
          amount: UInt,
          signature: Data,
@@ -31,14 +31,13 @@ struct Operation {
     private let hashService: HashService
     private let signatureService: SignatureService
     
-   
-    
     func isValid() -> Bool {
         guard amount <= sender.balance else {
             return false
         }
         
         let publicKey = sender.publicKey
+        
  
         // TODO: add message
         // TODO: signature verify

@@ -18,7 +18,7 @@ final class Blockchain {
     
     private(set) var blocksHistory: [Block]
     
-    public func addBlock(block: Block) -> Bool {
+    public func appendBlock(block: Block) -> Bool {
         let blockchainLastBlockId = blocksHistory.last?.id
         
         if blockchainLastBlockId == block.id {
